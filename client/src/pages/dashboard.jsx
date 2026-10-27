@@ -1,15 +1,20 @@
-// export default function Dashboard() {
-//   return <h1>Hello, it works</h1>;
-// }
-// Dashboard.jsx
 import styles from "./Dashboard.module.css";
+import MenuIcon from "./components/icons/menuIcon";
 
 export default function Dashboard() {
   return (
-    <div className={styles.page}>
-      <div className={styles.card}>
-        <h1>Hello, it works</h1>
-      </div>
-    </div>
+    <main className={styles.page}>
+      {/* Header */}
+      <header className={styles.header}>
+        <div className={styles.menuIcon}>
+          <MenuIcon />
+        </div>
+      </header>
+
+      {/* Dashboard content */}
+      <section className={styles.card}>
+        Resize the browser to see the color change
+      </section>
+    </main>
   );
 }

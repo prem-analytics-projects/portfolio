@@ -1,9 +1,61 @@
-/* Dashboard.module.css */
 .page {
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
+  background: tomato;
 }
+
+/* using for hamburger menu */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  min-height: 48px;
+  margin-bottom: 1.5rem;
+  /* background: black; */
+}
+
+.menuIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  color: black;
+}
+
+@media (min-width: 640px) {
+  .page {
+    background: gold;
+  }
+}
+
+@media (min-width: 768px) {
+  .page {
+    background: limegreen;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page {
+    background: dodgerblue;
+  }
+  .menuIcon {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .page {
+    background: orchid;
+  }
+  .menuIcon {
+    display: none;
+  }
+}
+
 .card {
   background: white;
   padding: 1.5rem;
