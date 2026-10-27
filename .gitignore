@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+.env.*
+target/
+*.class
+data/
+*.db
+*.mv.db
+.idea/
