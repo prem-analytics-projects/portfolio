@@ -6,14 +6,20 @@
 }
 
 /* using for hamburger menu */
-.header {
+.header,
+.hireMe {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  width: 100%;
+  justify-content: space-between; /* pushes the two items apart */
+  padding: 16px 20px 16px 32px;
   min-height: 48px;
   margin-bottom: 1.5rem;
   /* background: black; */
+}
+.title {
+  margin: 0; /* removes the default h2 margins */
+  font-size: 1.75rem;
+  font-weight: 700;
 }
 
 .menuIcon {
@@ -24,6 +30,20 @@
   height: 44px;
   cursor: pointer;
   color: black;
+}
+
+.downloadButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fca311;
+  color: #14213d;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 @media (min-width: 640px) {

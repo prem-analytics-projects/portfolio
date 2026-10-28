@@ -1,0 +1,109 @@
+.skills {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  text-align: center;
+  background: #14213d;
+  color: #f1f5f9;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.skills__heading {
+  font-size: clamp(2rem, 6vw, 3rem);
+  margin: 0;
+  font-weight: 700;
+}
+
+.skills__sub {
+  margin: 0.5rem 0 2.5rem;
+  font-size: 1.25rem;
+  color: #fca311;
+  font-weight: 600;
+}
+
+/* Mobile first: 4 columns by default */
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.skills__item {
+  display: flex;
+  flex-direction: column; /* icon on top, name underneath */
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 0.25rem;
+  min-height: 90px; /* replaces aspect-ratio so names fit */
+  border-radius: 12px;
+  background: #1f2f55;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.skills__item:hover {
+  transform: translateY(-4px);
+  color: #fca311;
+}
+
+.skills__icon {
+  font-size: clamp(1.5rem, 4vw, 2.25rem); /* icon size now lives here */
+  display: flex;
+}
+
+.skills__icon svg {
+  width: 1em;
+  height: 1em;
+}
+
+.skills__name {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  text-align: center;
+  opacity: 0.85;
+  word-break: break-word; /* stops long names overflowing */
+}
+
+.skills__letter {
+  font-weight: 700;
+  font-size: 0.55em;
+}
+
+/* Tablet: 6 columns */
+@media (min-width: 768px) {
+  .skills__grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Laptop: 8 columns */
+@media (min-width: 1024px) {
+  .skills__grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+.skills__item {
+  aspect-ratio: 1; /* keeps every cell a perfect square */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  border-radius: 12px;
+  background: #1f2f55;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.skills__item:hover {
+  transform: translateY(-4px);
+  color: #fca311;
+}
