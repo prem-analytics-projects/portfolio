@@ -8,6 +8,7 @@ import About from "./sections/aboutMe";
 import Skills from "./skills/skills";
 import Projects from "./components/projects/projects";
 import Contact from "./components/contacts/contacts";
+import Footer from "./components/footer/footer";
 
 export default function Dashboard() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -36,6 +37,7 @@ export default function Dashboard() {
       <Skills />
       <Projects />
       <Contact />
+      <Footer />
       {/* Dashboard content */}
       {/* <section className={styles.card}>
         Resize the browser to see the color change

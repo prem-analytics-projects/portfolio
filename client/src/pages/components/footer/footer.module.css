@@ -1,0 +1,53 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  background: #0f1a30; /* slightly darker than the sections */
+  border-top: 1px solid #1f2f55;
+  color: #f1f5f9;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.footer__text {
+  margin: 0;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.footer__text strong {
+  color: #fca311;
+}
+
+.footer__stack {
+  display: flex;
+  flex-wrap: wrap; /* wraps to a second line on tiny screens */
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none; /* removes the bullet dots */
+}
+
+.footer__stack li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.9rem;
+  border: 1px solid #fca311;
+  border-radius: 999px;
+  color: #fca311;
+  font-size: 0.85rem;
+}
+
+.footer__stack svg {
+  font-size: 1.1rem;
+}
+
+.footer__copy {
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
