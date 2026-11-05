@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { getAllUsers, updateUserStatus, deleteUser } from "../api/adminUserApi";
+import { getAllUsers, updateUserStatus, deleteUser } from "../api/authApi";
 
 import styles from "./userList.module.css";
 

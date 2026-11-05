@@ -1,0 +1,107 @@
+.container {
+  padding: 30px;
+  width: 100%;
+  color: #e5e5e5;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.header h2 {
+  margin-bottom: 6px;
+  color: #ffffff;
+}
+
+.header p {
+  color: #999999;
+}
+
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  background: #151515;
+  border-radius: 10px;
+}
+
+.userTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 850px;
+}
+
+.userTable th,
+.userTable td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #333333;
+}
+
+.userTable th {
+  background: #222222;
+  color: #9be7a1;
+}
+
+.userTable td {
+  color: #dddddd;
+}
+
+.statusSelect {
+  padding: 9px;
+  background: #222222;
+  color: white;
+  border: 1px solid #555555;
+  border-radius: 5px;
+}
+
+.updateButton,
+.deleteButton,
+.refreshButton {
+  padding: 9px 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.updateButton {
+  background: #39864a;
+  color: white;
+}
+
+.deleteButton {
+  background: #b93636;
+  color: white;
+}
+
+.refreshButton {
+  background: #333333;
+  color: white;
+}
+
+.updateButton:disabled,
+.deleteButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error {
+  padding: 12px;
+  margin-bottom: 15px;
+  color: #ff7777;
+  background: #351919;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .header {
+    align-items: flex-start;
+    gap: 15px;
+  }
+}

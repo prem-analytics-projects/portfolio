@@ -31,7 +31,8 @@ export default function Login() {
 
     try {
       const response = await loginUser(formData);
-
+      console.log("Login response:", response);
+      localStorage.setItem("token", response.token);
       // Example: backend may return the user's role
       if (response.role === "ADMIN") {
         navigate("/admin");
