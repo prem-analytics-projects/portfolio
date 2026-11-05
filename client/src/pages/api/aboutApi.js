@@ -1,5 +1,7 @@
 import apiClient from "./apiClient";
 
-export const getAboutData = async () => {
-  return await apiClient.get("/about");
+export const getAboutSections = async () => {
+  const response = await apiClient.get("/about-sections");
+
+  return response.data;
 };

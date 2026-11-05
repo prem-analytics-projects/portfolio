@@ -1,16 +1,26 @@
-/* .about {
-  width: 100%;
-  padding: 2rem;
+.aboutContainer {
+  padding: 30px;
+  color: white;
 }
 
-.about h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+.aboutContainer h1 {
   color: #16a34a;
+  margin-bottom: 25px;
 }
 
-.about p {
-  font-size: 1rem;
-  line-height: 1.8;
+.aboutCard {
+  background: #181818;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.aboutCard h2 {
+  color: #16a34a;
+  margin-bottom: 10px;
+}
+
+.aboutCard p {
   color: #d1d5db;
-} */
+  line-height: 1.7;
+}

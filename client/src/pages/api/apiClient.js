@@ -1,15 +1,11 @@
-const API_BASE_URL = "http://localhost:8080/api";
+import axios from "axios";
 
-const apiClient = {
-  get: async (endpoint) => {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`);
-
-    if (!response.ok) {
-      throw new Error(`API Error: ${response.status}`);
-    }
-
-    return response.json();
+const apiClient = axios.create({
+  baseURL: "http://localhost:8080/api/v1",
+  headers: {
+    "Content-Type": "application/json",
   },
-};
+  withCredentials: false,
+});
 
 export default apiClient;

@@ -1,52 +1,55 @@
 import { useEffect, useState } from "react";
 
-import { getAboutData } from "../../api/aboutMeApi";
+import { getAboutSections } from "../api/aboutApi";
 
 import styles from "./aboutMe.module.css";
 
 export default function About() {
-  const [about, setAbout] = useState(null);
+  const [aboutSections, setAboutSections] = useState([]);
 
   const [loading, setLoading] = useState(true);
 
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchAbout = async () => {
+    const fetchAboutSections = async () => {
       try {
-        const data = await getAboutData();
-
-        setAbout(data);
+        const data = await getAboutSections();
+        console.log("API DATA:", data);
+        console.log(
+          "SECTION IDs:",
+          data.map((section) => section.sectionId),
+        );
+        setAboutSections(data);
       } catch (err) {
         setError(err.message);
       } finally {
         setLoading(false);
       }
     };
-    fetchAbout();
+
+    fetchAboutSections();
   }, []);
+
   if (loading) {
-    return <p>Loading About Me...</p>;
+    return <p>Loading About Sections...</p>;
   }
+
   if (error) {
     return <p>Error: {error}</p>;
   }
-  if (!about) {
-    return <p>No About Me information found.</p>;
-  }
-  return (
-    <section className={styles.about}>
-      <h2>{about.heading}</h2>
 
-      <p>{about.description}</p>
-    </section>
+  return (
+    <div className={styles.aboutContainer}>
+      <h1>About Me</h1>
+
+      {aboutSections.map((section) => (
+        <div key={section.sectionId} className={styles.aboutCard}>
+          <h2>{section.heading}</h2>
+
+          <p>{section.description}</p>
+        </div>
+      ))}
+    </div>
   );
 }
-
-// export default function About() {
-//   return (
-//     <div>
-//       <h1>About Me Admin Page</h1>
-//     </div>
-//   );
-// }
