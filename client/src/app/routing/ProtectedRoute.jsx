@@ -4,7 +4,7 @@ import { useAuth } from "../providers/AuthContext";
 import { ROUTE_PATHS } from "./routePaths";
 
 export default function ProtectedRoute({ allowedRoles = [] }) {
-  const { isAuthenticated, user, loading } = useAuth();
+  const { isAuthenticated, roles, loading } = useAuth();
   const location = useLocation();
 
   if (loading) {
@@ -17,11 +17,9 @@ export default function ProtectedRoute({ allowedRoles = [] }) {
     );
   }
 
-  const userRoles = user?.roles || [];
-
   const hasPermission =
     allowedRoles.length === 0 ||
-    allowedRoles.some((role) => userRoles.includes(role));
+    allowedRoles.some((role) => roles.includes(role));
 
   if (!hasPermission) {
     return <Navigate to={ROUTE_PATHS.UNAUTHORIZED} replace />;

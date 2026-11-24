@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../api/authApi";
+import { useAuth } from "../../app/providers/AuthContext";
 import styles from "./Login.module.css";
 
 export default function Login() {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -30,17 +31,16 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const response = await loginUser(formData);
-      console.log("Login response:", response);
-      localStorage.setItem("token", response.token);
-      // Example: backend may return the user's role
-      if (response.role === "ADMIN") {
-        navigate("/admin");
-      } else {
-        navigate("/");
+      const result = await login(formData);
+
+      if (!result.success) {
+        setError(result.message);
+        return;
       }
+
+      navigate("/");
     } catch (err) {
-      setError(err.response?.data?.detail || err.message);
+      setError(err.message || "Login failed.");
     } finally {
       setLoading(false);
     }

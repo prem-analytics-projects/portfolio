@@ -17,19 +17,27 @@ import { ACCOUNT_STATUS, APPROVAL_STATUS } from "../../utils";
 import getErrorMessage from "../../utils/getErrorMessage";
 
 export default function AuthProvider({ children }) {
-  // Initialize directly from localStorage.
   const [user, setUser] = useState(() => getUser());
   const [token, setToken] = useState(() => getToken());
   const [loading, setLoading] = useState(false);
 
+  // Extract only approved roles from the backend response.
+  const roles = useMemo(
+    () =>
+      (user?.roles || [])
+        .filter((role) => role.approvalStatus === APPROVAL_STATUS.APPROVED)
+        .map((role) => role.roleName),
+    [user],
+  );
+
+  // Check account authentication.
   const isAuthenticated = Boolean(
     token &&
     user &&
     user.accountStatus === ACCOUNT_STATUS.ACTIVE &&
-    user.approvalStatus === APPROVAL_STATUS.APPROVED,
+    roles.length > 0,
   );
 
-  // Login.
   const login = useCallback(async (loginData) => {
     setLoading(true);
 
@@ -63,7 +71,6 @@ export default function AuthProvider({ children }) {
     }
   }, []);
 
-  // Logout.
   const logout = useCallback(() => {
     removeToken();
     removeUser();
@@ -78,11 +85,11 @@ export default function AuthProvider({ children }) {
       token,
       loading,
       isAuthenticated,
-      roles: user?.roles || [],
+      roles,
       login,
       logout,
     }),
-    [user, token, loading, isAuthenticated, login, logout],
+    [user, token, loading, isAuthenticated, roles, login, logout],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
