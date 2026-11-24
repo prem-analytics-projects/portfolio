@@ -1,47 +1,55 @@
 import { useState } from "react";
-import styles from "./Dashboard.module.css";
-import MenuIcon from "./components/icons/menuIcon";
-import MenuFloater from "./menu/menuFloater";
+import { FiArrowUpRight, FiMenu, FiMoon, FiSun, FiX } from "react-icons/fi";
+import { useTheme } from "../app/providers/ThemeContext";
+import styles from "./dashboard.module.css";
 import Intro from "./intro/intro";
-import SocialLinks from "./socailLinks/socialLinks";
 import About from "./sections/aboutMe";
 import Skills from "./skills/skills";
 import Projects from "./components/projects/projects";
 import Contact from "./components/contacts/contacts";
 import Footer from "./components/footer/footer";
 
+const navigation = [
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+];
+
 export default function Dashboard() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <main className={styles.page}>
-      {/* Header */}
-      <div className={styles.header}>
-        <h2 className={styles.title}>P</h2>
-        <button
-          className={styles.menuIcon}
-          onClick={() => setMenuOpen(true)}
-          aria-label="Open menu"
-        >
-          <MenuIcon />
+      <a className={styles.skipLink} href="#main-content">Skip to content</a>
+      <header className={styles.header}>
+        <a className={styles.brand} href="#home" onClick={closeMenu} aria-label="Prem Kuntia home">
+          <span className={styles.brandMark}>P</span>
+          <span>PREM KUNTIA<span className={styles.brandDot}>.</span></span>
+        </a>
+        <button type="button" className={styles.menuToggle} onClick={() => setMenuOpen((open) => !open)}
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} aria-controls="primary-navigation">
+          {menuOpen ? <FiX /> : <FiMenu />}
         </button>
+        <nav id="primary-navigation" className={`${styles.navigation} ${menuOpen ? styles.navigationOpen : ""}`} aria-label="Primary navigation">
+          {navigation.map((item) => <a key={item.href} href={item.href} onClick={closeMenu}>{item.label}</a>)}
+          <button type="button" className={styles.themeToggle} onClick={toggleTheme}
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`} title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}>
+            {theme === "dark" ? <FiSun /> : <FiMoon />}
+          </button>
+          <a className={styles.navCta} href="#contact" onClick={closeMenu}>Let's talk <FiArrowUpRight /></a>
+        </nav>
+      </header>
+      <div id="main-content">
+        <Intro />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
       </div>
-      <MenuFloater isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
-      <SocialLinks />
-      <Intro />
-
-      <div className={styles.hireMe}>
-        <h2 className={styles.title}>Hire Me</h2>
-        <button className={styles.downloadButton}>Download Resume</button>
-      </div>
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
       <Footer />
-      {/* Dashboard content */}
-      {/* <section className={styles.card}>
-        Resize the browser to see the color change
-      </section> */}
     </main>
   );
 }
