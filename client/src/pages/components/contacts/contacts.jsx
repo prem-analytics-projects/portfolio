@@ -69,7 +69,7 @@ export default function Contact() {
   };
 
   return (
-    <section className={styles.contact} id={styles.contact}>
+    <section className={styles.contact} id="contact">
       <h2 className={styles.contact__heading}>Contact</h2>
       <p className={styles.contact__sub}>Let us talk</p>
 
