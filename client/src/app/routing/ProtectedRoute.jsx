@@ -4,7 +4,12 @@ import { useAuth } from "../providers/AuthContext";
 import { ROUTE_PATHS } from "./routePaths";
 
 export default function ProtectedRoute({ allowedRoles = [] }) {
-  const { isAuthenticated, roles, loading } = useAuth();
+  const {
+    isAuthenticated,
+    roles,
+    loading,
+    isAccountActive,
+  } = useAuth();
   const location = useLocation();
 
   if (loading) {
@@ -12,9 +17,17 @@ export default function ProtectedRoute({ allowedRoles = [] }) {
   }
 
   if (!isAuthenticated) {
+    if (!isAccountActive && location.pathname !== ROUTE_PATHS.LOGIN) {
+      return <Navigate to={ROUTE_PATHS.ACCOUNT_UNAVAILABLE} replace />;
+    }
+
     return (
       <Navigate to={ROUTE_PATHS.LOGIN} replace state={{ from: location }} />
     );
+  }
+
+  if (roles.length === 0) {
+    return <Navigate to={ROUTE_PATHS.APPROVAL_PENDING} replace />;
   }
 
   const hasPermission =
