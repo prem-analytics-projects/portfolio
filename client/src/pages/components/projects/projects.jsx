@@ -16,13 +16,6 @@ const projects = [
     tags: ["Python", "dbt"],
     link: "#",
   },
-  {
-    title: "ETL Pipeline",
-    description: "Daily loads into the warehouse with quality checks.",
-    image: "/projects/etl-pipeline.png",
-    tags: ["Python", "dbt"],
-    link: "#",
-  },
   // add more projects here (6 or more feels good)
 ];
 
