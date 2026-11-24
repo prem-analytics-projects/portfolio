@@ -3,10 +3,13 @@ import { Routes, Route } from "react-router-dom";
 import Dashboard from "../pages/dashboard";
 import About from "../pages/admin/aboutMe";
 import Signup from "../pages/auth/signup";
-import Login from "../pages/auth/Login";
+import Login from "../pages/auth/login";
 import VerifyEmail from "../pages/auth/verifyEmail";
 import UsersList from "../pages/admin/userList";
 import AboutContent from "../pages/admin/aboutContainer";
+import AdminDashboard from "../pages/admin/AdminDashboard";
+import ApprovalPending from "../pages/auth/ApprovalPending";
+import AccountUnavailable from "../pages/auth/AccountUnavailable";
 
 import NotFound from "../pages/NotFound";
 import Unauthorized from "../pages/Unauthorized";
@@ -25,32 +28,39 @@ import {
 export default function AppRoutes() {
   return (
     <Routes>
-      {/* Public routes */}
+      {/* Public portfolio */}
       <Route path={ROUTE_PATHS.HOME} element={<Dashboard />} />
 
+      {/* Guest-only authentication pages */}
       <Route element={<GuestRoute />}>
         <Route path={ROUTE_PATHS.LOGIN} element={<Login />} />
         <Route path={ROUTE_PATHS.SIGNUP} element={<Signup />} />
       </Route>
 
-      {/* Email verification remains accessible separately */}
+      {/* Status pages remain reachable without an approved role */}
+      <Route path={ROUTE_PATHS.APPROVAL_PENDING} element={<ApprovalPending />} />
+      <Route path={ROUTE_PATHS.ACCOUNT_UNAVAILABLE} element={<AccountUnavailable />} />
       <Route path={ROUTE_PATHS.VERIFY_EMAIL} element={<VerifyEmail />} />
 
-      {/* Content management */}
+      {/* Editor, Admin and Super Admin can manage portfolio content */}
       <Route element={<ProtectedRoute allowedRoles={CONTENT_MANAGER_ROLES} />}>
         <Route path={ROUTE_PATHS.ADMIN_ABOUT} element={<About />} />
         <Route path="/admin/aboutContent" element={<AboutContent />} />
       </Route>
 
-      {/* Super Admin user management */}
+      {/* Admin and Super Admin dashboard */}
+      <Route element={<ProtectedRoute allowedRoles={ADMIN_ROLES} />}>
+        <Route path={ROUTE_PATHS.ADMIN} element={<AdminDashboard />} />
+      </Route>
+
+      {/* Super Admin only: user and role management */}
       <Route element={<ProtectedRoute allowedRoles={SUPER_ADMIN_ROLES} />}>
+        <Route path={ROUTE_PATHS.SUPER_ADMIN_USERS} element={<UsersList />} />
         <Route path={ROUTE_PATHS.ADMIN_USERS} element={<UsersList />} />
       </Route>
 
-      {/* Error pages */}
       <Route path={ROUTE_PATHS.UNAUTHORIZED} element={<Unauthorized />} />
-
-      <Route path="*" element={<NotFound />} />
+      <Route path={ROUTE_PATHS.NOT_FOUND} element={<NotFound />} />
     </Routes>
   );
 }
