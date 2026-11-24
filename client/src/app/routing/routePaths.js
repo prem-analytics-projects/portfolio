@@ -5,8 +5,9 @@ export const ROUTE_PATHS = {
   LOGIN: "/login",
   SIGNUP: "/signup",
   VERIFY_EMAIL: "/verify-email",
+  APPROVAL_PENDING: "/approval-pending",
 
-  // Admin
+  // Role-based workspaces
   ADMIN: "/admin",
   ADMIN_ABOUT: "/admin/about",
   ADMIN_USERS: "/admin/users",
@@ -17,6 +18,7 @@ export const ROUTE_PATHS = {
 
   // Error pages
   UNAUTHORIZED: "/unauthorized",
+  ACCOUNT_UNAVAILABLE: "/account-unavailable",
   NOT_FOUND: "*",
 };
 
