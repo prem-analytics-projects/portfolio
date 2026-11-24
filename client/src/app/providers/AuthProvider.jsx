@@ -13,29 +13,52 @@ import {
 } from "../../services/storage";
 
 import { ACCOUNT_STATUS, APPROVAL_STATUS } from "../../utils";
-
 import getErrorMessage from "../../utils/getErrorMessage";
+
+// The backend currently returns approved roles as strings, e.g. ["ADMIN"].
+// This also accepts role objects to remain compatible with older responses.
+function getApprovedRoles(user) {
+  if (!Array.isArray(user?.roles)) {
+    return [];
+  }
+
+  return [
+    ...new Set(
+      user.roles.flatMap((role) => {
+        if (typeof role === "string") {
+          return role.trim() ? [role.trim().toUpperCase()] : [];
+        }
+
+        if (
+          role &&
+          typeof role === "object" &&
+          role.approvalStatus === APPROVAL_STATUS.APPROVED &&
+          typeof role.roleName === "string"
+        ) {
+          return [role.roleName.trim().toUpperCase()];
+        }
+
+        return [];
+      }),
+    ),
+  ];
+}
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(() => getUser());
   const [token, setToken] = useState(() => getToken());
   const [loading, setLoading] = useState(false);
 
-  // Extract only approved roles from the backend response.
-  const roles = useMemo(
-    () =>
-      (user?.roles || [])
-        .filter((role) => role.approvalStatus === APPROVAL_STATUS.APPROVED)
-        .map((role) => role.roleName),
-    [user],
+  const roles = useMemo(() => getApprovedRoles(user), [user]);
+
+  // Authentication and authorization are deliberately separate.
+  // A user can be logged in while waiting for role approval.
+  const isAuthenticated = Boolean(
+    token && user && user.accountStatus === ACCOUNT_STATUS.ACTIVE,
   );
 
-  // Check account authentication.
-  const isAuthenticated = Boolean(
-    token &&
-    user &&
-    user.accountStatus === ACCOUNT_STATUS.ACTIVE &&
-    roles.length > 0,
+  const isAccountActive = Boolean(
+    user && user.accountStatus === ACCOUNT_STATUS.ACTIVE,
   );
 
   const login = useCallback(async (loginData) => {
@@ -43,7 +66,6 @@ export default function AuthProvider({ children }) {
 
     try {
       const response = await loginUser(loginData);
-
       const receivedToken = response?.accessToken;
       const receivedUser = response?.user;
 
@@ -53,14 +75,10 @@ export default function AuthProvider({ children }) {
 
       saveToken(receivedToken);
       saveUser(receivedUser);
-
       setToken(receivedToken);
       setUser(receivedUser);
 
-      return {
-        success: true,
-        user: receivedUser,
-      };
+      return { success: true, user: receivedUser };
     } catch (error) {
       return {
         success: false,
@@ -74,7 +92,6 @@ export default function AuthProvider({ children }) {
   const logout = useCallback(() => {
     removeToken();
     removeUser();
-
     setToken(null);
     setUser(null);
   }, []);
@@ -84,12 +101,23 @@ export default function AuthProvider({ children }) {
       user,
       token,
       loading,
-      isAuthenticated,
       roles,
+      isAuthenticated,
+      isAccountActive,
+      hasApprovedRole: roles.length > 0,
       login,
       logout,
     }),
-    [user, token, loading, isAuthenticated, roles, login, logout],
+    [
+      user,
+      token,
+      loading,
+      roles,
+      isAuthenticated,
+      isAccountActive,
+      login,
+      logout,
+    ],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
