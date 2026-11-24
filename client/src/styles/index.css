@@ -1,0 +1,12 @@
+/* =========================================
+   CENTRAL STYLESHEET
+========================================= */
+
+/* 1. Design tokens */
+@import "./variables.css";
+
+/* 2. Global application styles */
+@import "./global.css";
+
+/* 3. Reusable animations */
+@import "./animations.css";

@@ -1,0 +1,40 @@
+.animatedElement {
+  opacity: 0;
+  transition:
+    opacity var(--animation-duration, 700ms) ease,
+    transform var(--animation-duration, 700ms) ease;
+  transition-delay: var(--animation-delay, 0ms);
+}
+
+.fadeUp {
+  transform: translateY(35px);
+}
+
+.fadeDown {
+  transform: translateY(-35px);
+}
+
+.fadeLeft {
+  transform: translateX(35px);
+}
+
+.fadeRight {
+  transform: translateX(-35px);
+}
+
+.fadeIn {
+  transform: none;
+}
+
+.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animatedElement {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

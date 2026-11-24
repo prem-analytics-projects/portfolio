@@ -1,0 +1,83 @@
+.adminAboutContainer {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.adminAboutContainer textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: vertical;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.adminAboutContainer button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #16834a;
+  color: white;
+}
+
+.adminAboutContainer button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.descriptionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.descriptionCard {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  background: white;
+  color: #222;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.descriptionCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.descriptionContent {
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.descriptionMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 15px 0;
+  color: #777;
+}
+
+.statusActive {
+  color: green;
+  font-weight: bold;
+}
+
+.statusDisabled {
+  color: #d97706;
+  font-weight: bold;
+}
+
+.statusLink {
+  background: transparent !important;
+  color: #16834a !important;
+  padding: 5px 0 !important;
+  text-decoration: underline;
+}

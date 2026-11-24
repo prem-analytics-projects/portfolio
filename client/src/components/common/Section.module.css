@@ -1,0 +1,18 @@
+.section {
+  position: relative;
+  width: 100%;
+  padding-block: var(--spacing-5xl);
+  scroll-margin-top: calc(var(--header-height) + 20px);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-block: var(--spacing-3xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding-block: var(--spacing-2xl);
+  }
+}

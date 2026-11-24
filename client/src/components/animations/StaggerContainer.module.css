@@ -1,0 +1,22 @@
+.container > * {
+  animation: stagger-fade-up 0.7s ease both;
+  animation-delay: var(--stagger-delay, 0ms);
+}
+
+@keyframes stagger-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container > * {
+    animation: none;
+  }
+}

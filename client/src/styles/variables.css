@@ -1,0 +1,127 @@
+/* =========================================
+   PORTFOLIO DESIGN SYSTEM
+   Colors, typography, spacing and transitions
+========================================= */
+
+/* ---------- Dark Theme (Default) ---------- */
+
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Backgrounds */
+  --color-bg: #0b0f0e;
+  --color-bg-secondary: #111816;
+  --color-surface: #151e1a;
+  --color-surface-hover: #1c2923;
+
+  /* Text */
+  --color-text: #f1f5f2;
+  --color-text-secondary: #a2b1a8;
+  --color-text-muted: #718078;
+
+  /* Brand */
+  --color-primary: #10b981;
+  --color-primary-hover: #059669;
+  --color-primary-soft: rgba(16, 185, 129, 0.12);
+
+  /* Borders and shadows */
+  --color-border: rgba(255, 255, 255, 0.09);
+  --color-border-strong: rgba(255, 255, 255, 0.16);
+  --shadow-card: 0 12px 35px rgba(0, 0, 0, 0.25);
+  --shadow-glow: 0 0 30px rgba(16, 185, 129, 0.12);
+}
+
+/* ---------- Light Theme ---------- */
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Backgrounds */
+  --color-bg: #f7faf8;
+  --color-bg-secondary: #eef3f0;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f0f7f3;
+
+  /* Text */
+  --color-text: #17231d;
+  --color-text-secondary: #53645a;
+  --color-text-muted: #829087;
+
+  /* Brand */
+  --color-primary: #059669;
+  --color-primary-hover: #047857;
+  --color-primary-soft: rgba(5, 150, 105, 0.1);
+
+  /* Borders and shadows */
+  --color-border: rgba(23, 35, 29, 0.09);
+  --color-border-strong: rgba(23, 35, 29, 0.16);
+  --shadow-card: 0 12px 35px rgba(23, 35, 29, 0.07);
+  --shadow-glow: 0 0 30px rgba(5, 150, 105, 0.08);
+}
+
+/* ---------- Typography ---------- */
+
+:root {
+  --font-primary: "Inter", "Segoe UI", sans-serif;
+  --font-monospace: "Consolas", "Courier New", monospace;
+
+  --font-xs: 0.75rem;
+  --font-sm: 0.875rem;
+  --font-base: 1rem;
+  --font-lg: 1.125rem;
+  --font-xl: 1.25rem;
+  --font-2xl: 1.5rem;
+  --font-3xl: 1.875rem;
+  --font-4xl: 2.25rem;
+  --font-5xl: 3rem;
+  --font-6xl: 3.75rem;
+}
+
+/* ---------- Layout ---------- */
+
+:root {
+  --container-width: 1200px;
+  --header-height: 76px;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+}
+
+/* ---------- Borders and Radius ---------- */
+
+:root {
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+}
+
+/* ---------- Animation ---------- */
+
+:root {
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- Responsive Breakpoints ---------- */
+
+:root {
+  --breakpoint-mobile: 480px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-laptop: 1024px;
+  --breakpoint-desktop: 1280px;
+}

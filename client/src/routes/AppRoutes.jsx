@@ -6,6 +6,7 @@ import Signup from "../pages/auth/signup";
 import Login from "../pages/auth/Login";
 import VerifyEmail from "../pages/auth/verifyEmail";
 import UsersList from "../pages/admin/userList";
+import AboutContent from "../pages/admin/aboutContainer";
 
 export default function AppRoutes() {
   return (
@@ -17,6 +18,7 @@ export default function AppRoutes() {
       <Route path="/login" element={<Login />} />
       <Route path="/verify-email" element={<VerifyEmail />} />
       <Route path="/admin/users" element={<UsersList />} />
+      <Route path="/admin/aboutContent" element={<AboutContent />} />
     </Routes>
   );
 }

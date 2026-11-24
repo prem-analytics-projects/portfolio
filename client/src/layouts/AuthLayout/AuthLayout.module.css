@@ -1,0 +1,31 @@
+.authLayout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100vh;
+  width: 100%;
+  padding: var(--spacing-xl);
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      var(--color-primary-soft),
+      transparent 35%
+    ),
+    var(--color-bg);
+
+  color: var(--color-text);
+}
+
+.authContainer {
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+@media (max-width: 480px) {
+  .authLayout {
+    padding: var(--spacing-md);
+  }
+}
