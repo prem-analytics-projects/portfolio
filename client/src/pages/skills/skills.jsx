@@ -46,7 +46,7 @@ const skills = [
 ];
 export default function Skills() {
   return (
-    <section className={styles.skills} id={styles.skills}>
+    <section className={styles.skills} id="skills">
       <h2 className={styles.skills__heading}>Skills</h2>
       <p className={styles.skills__sub}>Tools and Technologies</p>
 
