@@ -59,7 +59,7 @@ export default function Projects() {
   const slideWidth = 100 / perView; // each card's width in %
 
   return (
-    <section className={styles.projects} id={styles.projects}>
+    <section className={styles.projects} id="projects">
       <h2 className={styles.projects__heading}>Projects</h2>
       <p className={styles.projects__sub}>Things I have built</p>
 
