@@ -1,0 +1,73 @@
+:root {
+  /* Background colors */
+  --color-bg: #080d0b;
+  --color-bg-secondary: #0d1511;
+  --color-surface: #121d17;
+  --color-surface-hover: #19271f;
+
+  /* Brand colors */
+  --color-primary: #16a36a;
+  --color-primary-hover: #20c982;
+  --color-accent: #a3ffbf;
+  --color-accent-soft: rgba(22, 163, 106, 0.12);
+
+  /* Text colors */
+  --color-text: #f2f7f3;
+  --color-text-secondary: #a0b0a5;
+  --color-text-muted: #6d8073;
+
+  /* Borders */
+  --color-border: rgba(163, 255, 191, 0.12);
+  --color-border-hover: rgba(163, 255, 191, 0.3);
+
+  /* Status colors */
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-info: #38bdf8;
+
+  /* Typography */
+  --font-primary: "Inter", "Segoe UI", sans-serif;
+  --font-mono: "Consolas", monospace;
+
+  /* Font sizes */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.5rem;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 999px;
+
+  /* Shadows */
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.25);
+  --shadow-glow: 0 0 25px rgba(22, 163, 106, 0.15);
+
+  /* Layout */
+  --container-width: 1280px;
+  --header-height: 76px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+}
